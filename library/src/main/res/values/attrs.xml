@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="WaveView">
+        <attr name="wave_height" format="dimension" />
+        <attr name="wave_color" format="color" />
+        <attr name="wave_count" format="integer" />
+        <attr name="duration" format="integer" />
+        <attr name="height" format="dimension"/>
+    </declare-styleable>
+</resources>
