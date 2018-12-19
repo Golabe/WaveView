@@ -14,7 +14,7 @@ import android.view.animation.LinearInterpolator;
 public class WaveView extends View {
 
     private static final float DEFAULT_WAVE_HEIGHT = 10F;
-    private static final int DEFAULT_WAVE_COUNT = 4;
+    private static final int DEFAULT_WAVE_COUNT = 1;
     private static final int DEFAULT_HEIGHT = 100;
     private static final int DEFAULT_DURATION = 1000;
     private static final float DEFAULT_SELF_HEIGHT = 50;
