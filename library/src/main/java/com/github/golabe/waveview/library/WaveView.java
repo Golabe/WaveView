@@ -21,8 +21,8 @@ public class WaveView extends View {
     private float waveHeight;
     private int waveBeforeColor;
     private int waveCount;
-    private Paint paint;
-    private Path path;
+    private Paint waveBeforePaint;
+    private Path waveBeforePath;
     private int width;
     private int height;
     private int waveLength;
@@ -30,8 +30,8 @@ public class WaveView extends View {
     private int duration;
     private float selfHeight;
     private ValueAnimator animator;
-    private Paint paint1;
-    private Path path1;
+    private Paint waveAfterPaint;
+    private Path waveAfterPath;
     private int waveAfterColor;
     private int waveAfterAlpha;
 
@@ -50,16 +50,16 @@ public class WaveView extends View {
     }
 
     private void init() {
-        paint = new Paint(Paint.ANTI_ALIAS_FLAG);
-        paint.setColor(waveBeforeColor);
-        paint.setStyle(Paint.Style.FILL);
-        path = new Path();
+        waveBeforePaint = new Paint(Paint.ANTI_ALIAS_FLAG);
+        waveBeforePaint.setColor(waveBeforeColor);
+        waveBeforePaint.setStyle(Paint.Style.FILL);
+        waveBeforePath = new Path();
 
-        paint1 = new Paint(Paint.ANTI_ALIAS_FLAG);
-        paint1.setColor(waveAfterColor);
-        paint1.setStyle(Paint.Style.FILL);
-        paint1.setAlpha(waveAfterAlpha);
-        path1 = new Path();
+        waveAfterPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
+        waveAfterPaint.setColor(waveAfterColor);
+        waveAfterPaint.setStyle(Paint.Style.FILL);
+        waveAfterPaint.setAlpha(waveAfterAlpha);
+        waveAfterPath = new Path();
     }
 
     private void attrs(AttributeSet attrs) {
@@ -107,30 +107,30 @@ public class WaveView extends View {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-        path.reset();
-        path.moveTo(-waveLength + dx, selfHeight);
+        waveBeforePath.reset();
+        waveBeforePath.moveTo(-waveLength + dx, selfHeight);
 
-        path1.reset();
-        path1.moveTo(-waveLength*1.5F+dx,selfHeight);
+        waveAfterPath.reset();
+        waveAfterPath.moveTo(-waveLength*1.5F+dx,selfHeight);
         for (int i = -waveLength; i < width + waveLength; i += waveLength) {
-            path.rQuadTo(haftWaveLength / 2, -waveHeight, haftWaveLength, 0);
-            path.rQuadTo(haftWaveLength / 2, waveHeight, haftWaveLength, 0);
+            waveBeforePath.rQuadTo(haftWaveLength / 2, -waveHeight, haftWaveLength, 0);
+            waveBeforePath.rQuadTo(haftWaveLength / 2, waveHeight, haftWaveLength, 0);
 
         }
         for (int i = (int) (-waveLength*1.5F); i < width+waveLength*1.5F; i+=waveLength) {
-            path1.rQuadTo(haftWaveLength / 2, -waveHeight, haftWaveLength, 0);
-            path1.rQuadTo(haftWaveLength / 2, waveHeight, haftWaveLength, 0);
+            waveAfterPath.rQuadTo(haftWaveLength / 2, -waveHeight, haftWaveLength, 0);
+            waveAfterPath.rQuadTo(haftWaveLength / 2, waveHeight, haftWaveLength, 0);
         }
 
-        path1.lineTo(width, height);
-        path1.lineTo(0, height);
-        path1.close();
-        canvas.drawPath(path1,paint1);
+        waveAfterPath.lineTo(width, height);
+        waveAfterPath.lineTo(0, height);
+        waveAfterPath.close();
+        canvas.drawPath(waveAfterPath, waveAfterPaint);
 
-        path.lineTo(width, height);
-        path.lineTo(0, height);
-        path.close();
-        canvas.drawPath(path, paint);
+        waveBeforePath.lineTo(width, height);
+        waveBeforePath.lineTo(0, height);
+        waveBeforePath.close();
+        canvas.drawPath(waveBeforePath, waveBeforePaint);
 
     }
 
