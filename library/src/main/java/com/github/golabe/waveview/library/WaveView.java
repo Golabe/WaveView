@@ -70,7 +70,7 @@ public class WaveView extends View {
             waveBeforeColor = a.getColor(R.styleable.WaveView_wave_before_color, Color.parseColor("#40b450"));
             waveAfterColor = a.getColor(R.styleable.WaveView_wave_after_color, Color.parseColor("#40b450"));
             waveCount = a.getInt(R.styleable.WaveView_wave_count, DEFAULT_WAVE_COUNT);
-            duration = a.getInt(R.styleable.WaveView_duration, DEFAULT_DURATION);
+            duration = a.getInt(R.styleable.WaveView_wave_duration, DEFAULT_DURATION);
             waveAfterAlpha = a.getInt(R.styleable.WaveView_wave_after_alpha, 125);
             selfHeight = dp2px(a.getDimension(R.styleable.WaveView_height, DEFAULT_SELF_HEIGHT));
             a.recycle();

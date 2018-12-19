@@ -11,7 +11,7 @@
         android:id="@+id/waveView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:duration="1000"
+        app:wave_duration="1000"
         app:wave_after_alpha="100"
         app:wave_after_color="@color/colorPrimary"
         app:wave_before_color="@color/colorPrimary"

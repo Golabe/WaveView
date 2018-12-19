@@ -10,7 +10,7 @@
         <!--波的个数-->
         <attr name="wave_count" format="integer" />
         <!--持续时间-->
-        <attr name="duration" format="integer" />
+        <attr name="wave_duration" format="integer" />
         <!--波浪高度-->
         <attr name="height" format="dimension" />
         <!--后面一层波浪 alpha值0-255-->
