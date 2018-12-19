@@ -111,13 +111,13 @@ public class WaveView extends View {
         waveBeforePath.moveTo(-waveLength + dx, selfHeight);
 
         waveAfterPath.reset();
-        waveAfterPath.moveTo(-waveLength*1.5F+dx,selfHeight);
+        waveAfterPath.moveTo(-waveLength * 1.5F + dx, selfHeight);
         for (int i = -waveLength; i < width + waveLength; i += waveLength) {
             waveBeforePath.rQuadTo(haftWaveLength / 2, -waveHeight, haftWaveLength, 0);
             waveBeforePath.rQuadTo(haftWaveLength / 2, waveHeight, haftWaveLength, 0);
 
         }
-        for (int i = (int) (-waveLength*1.5F); i < width+waveLength*1.5F; i+=waveLength) {
+        for (int i = (int) (-waveLength * 1.5F); i < width + waveLength * 1.5F; i += waveLength) {
             waveAfterPath.rQuadTo(haftWaveLength / 2, -waveHeight, haftWaveLength, 0);
             waveAfterPath.rQuadTo(haftWaveLength / 2, waveHeight, haftWaveLength, 0);
         }
@@ -166,10 +166,7 @@ public class WaveView extends View {
     @Override
     protected void onDetachedFromWindow() {
         super.onDetachedFromWindow();
-        if (animator != null) {
-            animator.cancel();
-            animator = null;
-        }
+        cancelAnimation();
     }
 
     public float getWaveHeight() {
