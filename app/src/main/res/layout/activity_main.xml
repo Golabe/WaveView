@@ -1,29 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".MainActivity">
 
     <com.github.golabe.waveview.library.WaveView
+        android:id="@+id/waveView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/waveView"
-        app:wave_count="3"
-        app:wave_color="@color/colorPrimary"
-        app:duration="500"
+        app:duration="1000"
+        app:wave_after_alpha="100"
+        app:wave_after_color="@color/colorPrimary"
+        app:wave_before_color="@color/colorPrimary"
+        app:wave_count="1"
         app:wave_height="10dp" />
 
+
+
     <Button
-        android:text="开始"
         android:id="@+id/btn_start"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:text="开始" />
+
     <Button
         android:id="@+id/btn_stop"
-        android:text="暂停"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:text="暂停" />
 </LinearLayout>

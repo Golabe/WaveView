@@ -1,10 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <declare-styleable name="WaveView">
+        <!--波高-->
         <attr name="wave_height" format="dimension" />
-        <attr name="wave_color" format="color" />
+        <!--前一层波浪颜色-->
+        <attr name="wave_before_color" format="color" />
+        <!--后一层波浪颜色-->
+        <attr name="wave_after_color" format="color" />
+        <!--波的个数-->
         <attr name="wave_count" format="integer" />
+        <!--持续时间-->
         <attr name="duration" format="integer" />
-        <attr name="height" format="dimension"/>
+        <!--波浪高度-->
+        <attr name="height" format="dimension" />
+        <!--后面一层波浪 alpha值0-255-->
+        <attr name="wave_after_alpha" format="integer"/>
+
     </declare-styleable>
 </resources>

@@ -19,7 +19,7 @@ public class WaveView extends View {
     private static final int DEFAULT_DURATION = 1000;
     private static final float DEFAULT_SELF_HEIGHT = 50;
     private float waveHeight;
-    private int waveColor;
+    private int waveBeforeColor;
     private int waveCount;
     private Paint paint;
     private Path path;
@@ -30,6 +30,10 @@ public class WaveView extends View {
     private int duration;
     private float selfHeight;
     private ValueAnimator animator;
+    private Paint paint1;
+    private Path path1;
+    private int waveAfterColor;
+    private int waveAfterAlpha;
 
     public WaveView(Context context) {
         this(context, null);
@@ -47,9 +51,15 @@ public class WaveView extends View {
 
     private void init() {
         paint = new Paint(Paint.ANTI_ALIAS_FLAG);
-        paint.setColor(waveColor);
+        paint.setColor(waveBeforeColor);
         paint.setStyle(Paint.Style.FILL);
         path = new Path();
+
+        paint1 = new Paint(Paint.ANTI_ALIAS_FLAG);
+        paint1.setColor(waveAfterColor);
+        paint1.setStyle(Paint.Style.FILL);
+        paint1.setAlpha(waveAfterAlpha);
+        path1 = new Path();
     }
 
     private void attrs(AttributeSet attrs) {
@@ -57,9 +67,11 @@ public class WaveView extends View {
         if (attrs != null) {
             TypedArray a = getContext().obtainStyledAttributes(attrs, R.styleable.WaveView);
             waveHeight = dp2px(a.getDimension(R.styleable.WaveView_wave_height, DEFAULT_WAVE_HEIGHT));
-            waveColor = a.getColor(R.styleable.WaveView_wave_color, Color.parseColor("#40b450"));
+            waveBeforeColor = a.getColor(R.styleable.WaveView_wave_before_color, Color.parseColor("#40b450"));
+            waveAfterColor = a.getColor(R.styleable.WaveView_wave_after_color, Color.parseColor("#40b450"));
             waveCount = a.getInt(R.styleable.WaveView_wave_count, DEFAULT_WAVE_COUNT);
             duration = a.getInt(R.styleable.WaveView_duration, DEFAULT_DURATION);
+            waveAfterAlpha = a.getInt(R.styleable.WaveView_wave_after_alpha, 125);
             selfHeight = dp2px(a.getDimension(R.styleable.WaveView_height, DEFAULT_SELF_HEIGHT));
             a.recycle();
         }
@@ -97,10 +109,24 @@ public class WaveView extends View {
         super.onDraw(canvas);
         path.reset();
         path.moveTo(-waveLength + dx, selfHeight);
+
+        path1.reset();
+        path1.moveTo(-waveLength*1.5F+dx,selfHeight);
         for (int i = -waveLength; i < width + waveLength; i += waveLength) {
             path.rQuadTo(haftWaveLength / 2, -waveHeight, haftWaveLength, 0);
             path.rQuadTo(haftWaveLength / 2, waveHeight, haftWaveLength, 0);
+
         }
+        for (int i = (int) (-waveLength*1.5F); i < width+waveLength*1.5F; i+=waveLength) {
+            path1.rQuadTo(haftWaveLength / 2, -waveHeight, haftWaveLength, 0);
+            path1.rQuadTo(haftWaveLength / 2, waveHeight, haftWaveLength, 0);
+        }
+
+        path1.lineTo(width, height);
+        path1.lineTo(0, height);
+        path1.close();
+        canvas.drawPath(path1,paint1);
+
         path.lineTo(width, height);
         path.lineTo(0, height);
         path.close();
@@ -151,16 +177,16 @@ public class WaveView extends View {
     }
 
     public void setWaveHeight(float waveHeight) {
-        this.waveHeight = waveHeight;
+        this.waveHeight = dp2px(waveHeight);
         invalidate();
     }
 
-    public int getWaveColor() {
-        return waveColor;
+    public int getWaveBeforeColor() {
+        return waveBeforeColor;
     }
 
-    public void setWaveColor(int waveColor) {
-        this.waveColor = waveColor;
+    public void setWaveBeforeColor(int waveBeforeColor) {
+        this.waveBeforeColor = waveBeforeColor;
         invalidate();
     }
 
@@ -179,6 +205,24 @@ public class WaveView extends View {
 
     public void setDuration(int duration) {
         this.duration = duration;
+        invalidate();
+    }
+
+    public int getWaveAfterColor() {
+        return waveAfterColor;
+    }
+
+    public void setWaveAfterColor(int waveAfterColor) {
+        this.waveAfterColor = waveAfterColor;
+        invalidate();
+    }
+
+    public int getWaveAfterAlpha() {
+        return waveAfterAlpha;
+    }
+
+    public void setWaveAfterAlpha(int waveAfterAlpha) {
+        this.waveAfterAlpha = waveAfterAlpha;
         invalidate();
     }
 }
