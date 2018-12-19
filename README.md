@@ -2,7 +2,9 @@
 ## 水波浪
 
 <div algin="center"><image src="https://github.com/Golabe/WaveView/blob/master/gifs/a.gif?raw=true" with="300"/> </div>
+
 ### xml
+
 ```xml
   <com.github.golabe.waveview.library.WaveView
         android:id="@+id/waveView"
@@ -16,6 +18,7 @@
         app:wave_height="10dp" />
 ```
 ### attrs
+
 ```xml
  <declare-styleable name="WaveView">
         <!--波高-->
