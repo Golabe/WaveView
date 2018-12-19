@@ -1,7 +1,7 @@
 # WaveView
 ## 水波浪
 
-<div algin="center"><image src="https://github.com/Golabe/WaveView/blob/master/gifs/a.gif?raw=true" with="300"/> </div>
+<div align="center"><image src="https://github.com/Golabe/WaveView/blob/master/gifs/a.gif?raw=true" with="300"/> </div>
 
 ### xml
 
