@@ -2,7 +2,10 @@
 ## 水波浪
 
 <div align="center"><image src="https://github.com/Golabe/WaveView/blob/master/gifs/a.gif?raw=true" with="300"/> </div>
-
+### gradle
+```xml
+implementation 'top.golabe.WaveView:library:1.0.1'
+```
 ### xml
 
 ```xml
